@@ -1,65 +1,105 @@
 body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px; }
+  overflow-y: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+.chat-room {
+  height: 100vh;
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
+  #messages {
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 200px;
+    padding-top: 20px;
+  }
 
-a {
-  color: #000; }
+  .navbar {
+    border-bottom: 1px solid #eeeeee;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+  }
 
-a:visited {
-  color: #666; }
+  .message {
+    min-height: 59px;
+    .content-container {
+      display: inline-block;
+      .content {
+        background-color: #eeeeee;
+        padding: 8px 16px;
+        border-radius: 20px;
+      }
+      .author {
+        font-size: 0.8rem;
+        color: #777777;
+        margin-left: 10px;
+      }
+    }
+    &.me {
+      .content-container {
+        float: right;
+        .content {
+          background-color: #007bff;
+          color: white;
+        }
+      }
+    }
+  }
+  .chat-box {
+    position: absolute;
+    bottom: -10px;
+    padding: 20px;
+    width: 100%;
+    margin-left: -15px;
+    background-color: white;
+    border-top: 1px solid #eeeeee;
+    input[type=text] {
+      height: 45px;
+      font-size: 18px;
+      padding: 8px;
+    }
+    .btn {
+      height: 45px;
+    }
+  }
+}
 
-a:hover {
-  color: #fff;
-  background-color: #000; }
+.card.no-outline {
+  border: none;
+}
 
-th {
-  padding-bottom: 5px; }
+.room-link {
+  &:hover {
+    text-decoration: none;
+  }
+  .room-card {
+    transition: background-color 0.5s ease;
+    border-radius: 20px;
+    &:hover {
+      background-color: #eeeeee;
+    }
+    &.active {
+      background-color: black;
+      .name {
+        color: white;
+      }
+      .member-count {
+        color: #e0e0e0;
+      }
+    }
+    .name {
+      font-weight: bold;
+      color: black;
+    }
+    .member-count {
+      color: #777777;
+      font-weight: light;
+    }
+  }
+}
 
-td {
-  padding: 0 5px 7px; }
-
-div.field,
-div.actions {
-  margin-bottom: 10px; }
-
-#notice {
-  color: green; }
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table; }
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0; }
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px -7px 0;
-  background-color: #c00;
-  color: #fff; }
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square; }
-
-label {
-  display: block; }
+.rooms-sidebar {
+  border-right: 1px solid #eeeeee;
+}
